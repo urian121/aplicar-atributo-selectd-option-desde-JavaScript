@@ -69,20 +69,22 @@
        * Llenando un select option con javascript, creando option con un intervalo de 30 minutos
        */
       let selectHoras = document.querySelector("#horas");
-      for (let hora = 7, minuto = 0; hora <= 18; minuto += 30) {
-        let valorHm = `${hora.toString().padStart(2, "0")}:${minuto
-          .toString()
-          .padStart(2, "0")}`;
+      
+      for (let hora = 7; hora <= 18; hora++) {
+        for (let minuto of ["00", "30"]) {
+          if (hora === 18 && minuto === "30") {
+            break;
+          }
 
-        selectHoras.innerHTML += `<option value='${valorHm}'>${valorHm}  ${
-          valorHm < "12:00" ? "a.m" : "p.m"
-        }</option>`;
+          let ampm = hora < 12 ? "AM" : "PM";
+          let hora12 = hora % 12 || 12;
 
-        if (minuto === 30) {
-          hora++;
-          minuto = 0;
+          console.log(`${hora12.toString().padStart(2, "0")}:${minuto} ${ampm}`);
+          let resultado = `${hora12.toString().padStart(2, "0")}:${minuto} ${ampm}`;
+          selectHoras.innerHTML += `<option value='${resultado}'>${resultado}</option>`;
         }
       }
+
     </script>
   </body>
 </html>
