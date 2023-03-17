@@ -27,6 +27,13 @@
             <option value="3">Azul</option>
           </select>
         </div>
+
+        <div class="mb-3">
+          <label for="horas" class="form-label"
+            >Horario con intervalo de 30 minutos</label
+          >
+          <select id="horas" class="form-select"></select>
+        </div>
       </div>
     </div>
 
@@ -57,6 +64,25 @@
        * Importante, esta forma me funciona genia cual estoy editando un registro y necesito mostra la opcion
        * por defecto que viene desde BD aplicandole el atributo selected, este ejemplo lo he aplicado en fullcalendar
        */
+
+      /**
+       * Llenando un select option con javascript, creando option con un intervalo de 30 minutos
+       */
+      let selectHoras = document.querySelector("#horas");
+      for (let hora = 7, minuto = 0; hora <= 18; minuto += 30) {
+        let valorHm = `${hora.toString().padStart(2, "0")}:${minuto
+          .toString()
+          .padStart(2, "0")}`;
+
+        selectHoras.innerHTML += `<option value='${valorHm}'>${valorHm}  ${
+          valorHm < "12:00" ? "a.m" : "p.m"
+        }</option>`;
+
+        if (minuto === 30) {
+          hora++;
+          minuto = 0;
+        }
+      }
     </script>
   </body>
 </html>
