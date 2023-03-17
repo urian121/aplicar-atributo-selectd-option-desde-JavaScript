@@ -85,6 +85,30 @@
         }
       }
 
+      
+      
+      <!--
+      let horaString = "1:00 PM"; // hora en formato de 12 horas
+
+let [hora, minuto] = horaString.split(":").map(Number);
+let ampm = horaString.includes("PM") ? "PM" : "AM";
+
+if (hora === 12) {
+  hora = 0;
+}
+
+for (let h = hora; h <= 18; h++) {
+  for (let m of ["00", "30"]) {
+    if (h === 18 && m === "30") {
+      break;
+    }
+    let hora12 = h % 12 || 12;
+    let ampmActual = h >= 12 ? "PM" : "AM";
+    console.log(`${hora12.toString().padStart(2, "0")}:${m} ${ampmActual}`);
+  }
+}
+
+      -->
     </script>
   </body>
 </html>
